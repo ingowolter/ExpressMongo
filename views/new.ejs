@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CRUD Clientes</title>
+</head>
+<body>
+    <h1><%=title %></h1>
+    <p>Preencha os dados abaixo para salvar o cliente.</p>
+    <form action="<%= action %>"method="POST">
+        <p>	
+            <label>Nome: <input type="text" name="nome"/></label>
+        </p>
+        <p>	
+            <label>Idade: <input type="number" name="idade"/></label>
+        </p>
+        <p>
+            <label>
+                UF:
+                <select name="uf">
+                    <option>RS</option>
+                    <option>SC</option>
+                    <option>PR</option>
+                </select>
+            </label>
+        </p>
+        <a href="/">Cancelar</a>  | <input type="submit" value="Salvar"/>
+    </form>
+</body>
+</html>
