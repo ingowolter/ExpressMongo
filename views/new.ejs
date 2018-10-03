@@ -5,28 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CRUD Clientes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 </head>
 <body>
-    <h1><%=title %></h1>
-    <p>Preencha os dados abaixo para salvar o cliente.</p>
-    <form action="<%= action %>"method="POST">
-        <p>	
-            <label>Nome: <input type="text" name="nome"/></label>
-        </p>
-        <p>	
-            <label>Idade: <input type="number" name="idade"/></label>
-        </p>
-        <p>
-            <label>
-                UF:
-                <select name="uf">
-                    <option>RS</option>
-                    <option>SC</option>
-                    <option>PR</option>
-                </select>
-            </label>
-        </p>
-        <a href="/">Cancelar</a>  | <input type="submit" value="Salvar"/>
-    </form>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Express</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/new">Cadastro</a></li>
+            <li><a href="#">Clientes</a></li>
+            <li><a href="#">Sair</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <h1><%=title %></h1>
+            <p>Preencha os dados abaixo para salvar o cliente.</p>
+            <form action="<%= action %>"method="POST">
+                <p>	
+                    <label>Nome: <input type="text" name="nome"/></label>
+                </p>
+                <p>	
+                    <label>Idade: <input type="number" name="idade"/></label>
+                </p>
+                <p>
+                    <label>
+                        UF:
+                        <select name="uf">
+                            <option>RS</option>
+                            <option>SC</option>
+                            <option>PR</option>
+                        </select>
+                    </label>
+                </p>
+                <a href="/">Cancelar</a>  | <input type="submit" value="Salvar"/>
+            </form>
+        </div>
+    </div>            
 </body>
 </html>

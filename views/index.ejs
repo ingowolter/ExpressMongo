@@ -2,45 +2,65 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link href="node_modules/milligram/dist/milligram.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p><%= message %></p>
-    <table width="50%">
-      <thead>
-        <tr style="background:#ccc">
-          <td width="50%">Nome</td>
-          <td width="50%">Idade</td>
-          <td width="50%">UF</td>
-          <td width="50%">Ações</td>
-        </tr>
-      </thead>
-      <tbody>
-        <% if(!docs || docs.length == 0){ %>
-          <tr>
-            <td colspan="4">Nenhum cliente cadastrado</td>
-          </tr>
-        <% }else {
-          docs.forEach(function(curtomers){
-        %>
-          <tr>
-              <td colspan="4">
-                  <%= curtomers.nome %>
-              </td>
-              <td colspan="4">
-                  <%= curtomers.idade %>
-              </td>
-            </tr>
-        <% })
-        } %>
-      </tfoot>
-        </table>
-        <a class="button" href="#">Default Button</a>
-
-        
-        <a href="/new">Cadastrar Novo</a>
-
+      <nav>
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Express</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="/new">Cadastro</a></li>
+              <li><a href="#">Clientes</a></li>
+              <li><a href="#">Sair</a></li>
+            </ul>
+          </div>
+        </nav>
+    <div class="container">
+        <div class="row">
+          <h3><%= title %></h3>
+          <p><%= message %></p>
+        </div>
+        <div class="row">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th width="50%">Nome</th>
+                <th width="15%">Idade</th>
+                <th width="15%">UF</th>
+                <th width="15%">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(!docs || docs.length == 0){ %>
+                <tr>
+                  <td colspan="4">Nenhum cliente cadastrado</td>
+                </tr>
+              <% }else {
+                docs.forEach(function(curtomers){
+              %>
+                <tr>
+                    <td width="50%">
+                        <%= curtomers.nome %>
+                    </td>
+                    <td width="15%">
+                        <%= curtomers.idade %>
+                    </td>
+                    <td width="15%">
+                        <%= curtomers.Uf %>
+                    </td>
+                    <td width="15%">
+                      
+                    </td>
+                  </tr>
+              <% })
+              } %>
+            </tfoot>
+          </table>
+        </div>
+        <div class="row">
+          <a class="waves-effect waves-light btn" href="/new">Cadastrar Novo</a>
+        </div> 
+      </div>   
 </html>
