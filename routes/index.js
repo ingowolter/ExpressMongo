@@ -3,10 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { 
-    title: 'Listagem de Clientes',
-    message: 'Clientes já cadastrados no sistema',
-   });
+  global.db.findAll((e,docs)=>{
+    if(e){return console.log(e);}
+    res.render('index',{docs,title: 'Listagem de Clientes', message: 'Clientes já cadastrados no sistema',})
+  })
+
 });
 
 router.get('/new', function(req, res, next){

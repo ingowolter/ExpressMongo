@@ -3,6 +3,8 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="node_modules/milligram/dist/milligram.css" rel="stylesheet" type="text/css">
+
   </head>
   <body>
     <h1><%= title %></h1>
@@ -17,12 +19,28 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td colspan="4">
-              <a href="/new">Cadastrar Novo</a>
-          </td>
-        </tr>
+        <% if(!docs || docs.length == 0){ %>
+          <tr>
+            <td colspan="4">Nenhum cliente cadastrado</td>
+          </tr>
+        <% }else {
+          docs.forEach(function(curtomers){
+        %>
+          <tr>
+              <td colspan="4">
+                  <%= curtomers.nome %>
+              </td>
+              <td colspan="4">
+                  <%= curtomers.idade %>
+              </td>
+            </tr>
+        <% })
+        } %>
       </tfoot>
         </table>
+        <a class="button" href="#">Default Button</a>
+
+        
+        <a href="/new">Cadastrar Novo</a>
 
 </html>
