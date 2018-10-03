@@ -15,7 +15,14 @@ router.get('/new', function(req, res, next){
 })
 
 router.post('/new', function(req, res, next){
-  res.redirect('/?new=true')
+  const nome = req.body.nome
+  const idade = parseInt(req.body.idade);
+  const uf = req.body.uf
+  global.db.insert({nome, idade, uf},(err, result)=>{
+    if(err){return console.log(err)}
+    res.redirect('/?new=true')
+  })
+  
 })
 
 module.exports = router;

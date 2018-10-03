@@ -10,4 +10,8 @@ function findAll(callback){
     global.conn.collection("curtomers").find({}).toArray(callback)
 }
 
-module.exports = {findAll}
+function insert(curtomers, callback){
+    global.conn.collection("curtomers").insert(curtomers, callback);
+}
+
+module.exports = {findAll, insert}
