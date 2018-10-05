@@ -14,4 +14,10 @@ function insert(curtomers, callback){
     global.conn.collection("curtomers").insert(curtomers, callback);
 }
 
-module.exports = {findAll, insert}
+const ObjectId = require("mongodb").ObjectID;
+
+function findOne(id, callback){
+    global.conn.collection("curtomers").findOne(new ObjectId(id), callback);
+}
+
+module.exports = {findAll, insert, findOne}

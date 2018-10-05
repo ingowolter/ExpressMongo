@@ -14,7 +14,7 @@
             <a href="#" class="brand-logo">Express</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/new">Cadastro</a></li>
-            <li><a href="#">Clientes</a></li>
+            <li><a href="/">Clientes</a></li>
             <li><a href="#">Sair</a></li>
             </ul>
         </div>
@@ -25,24 +25,34 @@
             <p>Preencha os dados abaixo para salvar o cliente.</p>
             <form action="<%= action %>"method="POST">
                 <p>	
-                    <label>Nome: <input type="text" name="nome"/></label>
+                    <label>Nome: <input type="text" name="nome" value="<%=doc.nome%>"/></label>
                 </p>
                 <p>	
-                    <label>Idade: <input type="number" name="idade"/></label>
+                    <label>Idade: <input type="number" name="idade" value="<%=doc.idade%>"/></label>
                 </p>
                 <p>
-                    <label>
-                        UF:
-                        <select name="uf">
-                            <option>RS</option>
-                            <option>SC</option>
-                            <option>PR</option>
-                        </select>
-                    </label>
+                    <select>
+                        <% const s = "selected" %>
+                        <option <% if(doc.uf ==="RS"){ %> <%=s %> <% } %>>RS</option>
+                        <option <% if(doc.uf ==="SC"){ %> <%=s %> <% } %>>SC</option>
+                        <option <% if(doc.uf ==="PR"){ %> <%=s %> <% } %>>PR</option>
+                        <option <% if(doc.uf ==="CE"){ %> <%=s %> <% } %>>CE</option>
+                        <option <% if(doc.uf ==="BH"){ %> <%=s %> <% } %>>BH</option>
+                    </select>
+                    <label> UF:</label>
                 </p>
                 <a href="/">Cancelar</a>  | <input type="submit" value="Salvar"/>
             </form>
         </div>
-    </div>            
+    </div> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var options = document.querySelectorAll('option');
+            var instances = M.FormSelect.init(elems, options);
+        });   
+    </script>
+       
 </body>
 </html>
