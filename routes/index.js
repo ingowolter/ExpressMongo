@@ -35,6 +35,21 @@ router.get('/edit/:id', function(req, res, next){
   
 })
 
+router.post('/edit/:id', function(req, res){
+    const id = req.params.id;
+    const nome = req.body.nome;
+    const idade = parseInt(req.body.idade);
+    const uf = req.body.uf;
+    global.db.update(id,{nome, idade, uf},(e, result)=>{ if(e){return console.log(e)} res.redirect('/?edit=true') })
 
+  })
+
+router.get('/delete/:id',function(req,res){
+    var id = req.params.id;
+    global.db.deleteOne(id,(e,r)=>{
+      if(e){console.log(e)}
+      res.redirect('/?delete=true')
+    })
+})  
 
 module.exports = router;

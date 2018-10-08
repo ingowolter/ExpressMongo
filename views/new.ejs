@@ -23,7 +23,7 @@
         <div class="row">
             <h1><%=title %></h1>
             <p>Preencha os dados abaixo para salvar o cliente.</p>
-            <form action="<%= action %>"method="POST">
+            <form action="<%= action %>"method="POST" name="Form">
                 <p>	
                     <label>Nome: <input type="text" name="nome" value="<%=doc.nome%>"/></label>
                 </p>
@@ -31,17 +31,23 @@
                     <label>Idade: <input type="number" name="idade" value="<%=doc.idade%>"/></label>
                 </p>
                 <p>
-                    <select>
-                        <% const s = "selected" %>
+                    <select name="uf">
+                        <% const s ="selected"%>
                         <option <% if(doc.uf ==="RS"){ %> <%=s %> <% } %>>RS</option>
+                        <option <% if(doc.uf ==="PB"){ %> <%=s %> <% } %>>PB</option>
                         <option <% if(doc.uf ==="SC"){ %> <%=s %> <% } %>>SC</option>
                         <option <% if(doc.uf ==="PR"){ %> <%=s %> <% } %>>PR</option>
                         <option <% if(doc.uf ==="CE"){ %> <%=s %> <% } %>>CE</option>
                         <option <% if(doc.uf ==="BH"){ %> <%=s %> <% } %>>BH</option>
+                        <option <% if(doc.uf ==="BA"){ %> <%=s %> <% } %>>BA</option>
+                        <option <% if(doc.uf ==="RN"){ %> <%=s %> <% } %>>RN</option>
+                        <option <% if(doc.uf ==="SP"){ %> <%=s %> <% } %>>SP</option>
                     </select>
                     <label> UF:</label>
                 </p>
-                <a href="/">Cancelar</a>  | <input type="submit" value="Salvar"/>
+                <span class="end">
+                    <a href="/" class="btn red">Cancelar</a>   <input type="submit" onclick="validateForm()" value="Salvar" class="btn green"/>
+                </span>    
             </form>
         </div>
     </div> 
@@ -51,7 +57,18 @@
             var elems = document.querySelectorAll('select');
             var options = document.querySelectorAll('option');
             var instances = M.FormSelect.init(elems, options);
+            var input = document.querySelectorAll('input');
         });   
+        function validateForm()
+    {
+        var a=document.forms["Form"]["nome"].value;
+        alert(a);
+        if (a==="" || b==="" || c==="")
+        {
+            alert("Please Fill All Required Field");
+            return false;
+        }
+    }
     </script>
        
 </body>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title><%= title %></title> 
+    <link rel="stylesheet" href="stylesheets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 
@@ -48,10 +49,11 @@
                         <%= curtomers.idade %>
                     </td>
                     <td width="15%">
-                        <%= curtomers.Uf %>
+                        <%= curtomers.uf %>
                     </td>
                     <td width="15%">
-                      <a href="/edit/<%= curtomers._id%>">Editar</a>
+                      <a href="/edit/<%= curtomers._id%>" class="link"><span class="badge blue">Editar</span></a>
+                      <a href="/delete/<%= curtomers._id%>" onclick="return confirm('Tem Certeza?');" class="link"><span class="badge red">Excluir</span></a>
                     </td>
                   </tr>
               <% })
@@ -60,8 +62,19 @@
           </table>
         </div>
         <div class="row">
-          <a class="waves-effect waves-light btn" href="/new">Cadastrar Novo</a>
+            <a class="btn blue" href="/new">Cadastrar Novo</a>
         </div> 
       </div>
+      <script>
+        if(location.href.indexOf('delete=true') != -1){
+          alert("Cliente excluido com sucesso!");
+        }
+        if(location.href.indexOf('edit=true') != -1){
+          alert("Cliente editado com sucesso!");
+        }
+        if(location.href.indexOf('new=true') != -1){
+          alert("Cliente cadastrado com sucesso!");
+        }
+      </script>
     </body>
 </html>
